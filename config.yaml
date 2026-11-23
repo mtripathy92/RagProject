@@ -1,6 +1,5 @@
 GROQ_MODEL: "openai/gpt-oss-20b"
 EMBED_MODEL: "sentence-transformers/all-MiniLM-L6-v2"
 COLLECTION_NAME: "telecom_hybrid"
-GITHUB_RAW_BASE: "https://raw.githubusercontent.com/tnahddisttud/sample-doc/main/data"
 FAQ_URL: "faq.csv"
 PDF_URL: "telecom_guide.pdf"

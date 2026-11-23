@@ -1,0 +1,57 @@
+case_id,archetype,question,status,error,response,retrieved_contexts,retrieval_ms,generation_ms,total_ms,llm_context_precision_with_reference,context_recall,faithfulness,answer_relevancy
+TC-001,Simple Factoid,How do I activate international roaming?,ok,,"To activate international roaming, log in to the MyTelecom app, go to **Plan & Services > International Roaming**, and toggle it on at least 24 hours before you travel. Pick a roaming bundle to avoid per‑MB charges. Roaming will automatically turn off when you return home. If you prefer, you can also enable it by calling 611.","Question: How do I activate international roaming?
+Answer: Log in to MyTelecom > Plan & Services > International Roaming and toggle it on at least 24 hours before travel. Select a roaming bundle to avoid per-MB charges. Roaming is automatically disabled when you return home.
+---
+Question: How do I activate international roaming?
+Answer: Log in to MyTelecom > Plan & Services > International Roaming and toggle it on at least 24 hours before travel. Select a roaming bundle to avoid per-MB charges. Roaming is automatically disabled when you return home.
+---
+Question: How do I activate international roaming?
+Answer: Log in to MyTelecom > Plan & Services > International Roaming and toggle it on at least 24 hours before travel. Select a roaming bundle to avoid per-MB charges. Roaming is automatically disabled when you return home.
+---
+Activating Roaming: Roaming must be enabled on the account before departure. The customer can toggle it in the MyTelecom app under Plan & Services > International Roaming or by calling 611. Network-level activation takes up to 15 minutes. If a customer enables roaming after landing abroad, they may receive a brief period of no service while the HLR record is updated.
+---
+Question: How do I activate international roaming?
+Answer: Log in to MyTelecom > Plan & Services > International Roaming and toggle it on at least 24 hours before travel. Select a roaming bundle to avoid per-MB charges. Roaming is automatically disabled when you return home.",301.69,1119.03,1420.73,1.0,1.0,1.0,1.0
+TC-002,Multi-Hop,Why is my mobile internet so slow?,ok,,"Slow speeds are usually caused by one of three things:
+
+1. **Network congestion** in your area  
+2. **Low‑signal zone** (e.g., inside a building or far from a tower)  
+3. **Reaching your high‑speed data cap** – once that’s hit, your speed drops to 512 kbps
+
+Try toggling airplane mode off and on to force a fresh network reconnect. If you’re still slow, you may have hit your data cap.","Question: Why is my mobile internet so slow?
+Answer: Slow speeds are usually caused by network congestion in your area, being in a low-signal zone, or reaching your high-speed data cap. Try toggling airplane mode off and on to force a network reconnect. If your high-speed data is exhausted your speed is throttled to 512 kbps.
+---
+Question: Why is my mobile internet so slow?
+Answer: Slow speeds are usually caused by network congestion in your area, being in a low-signal zone, or reaching your high-speed data cap. Try toggling airplane mode off and on to force a network reconnect. If your high-speed data is exhausted your speed is throttled to 512 kbps.
+---
+Question: Why is my mobile internet so slow?
+Answer: Slow speeds are usually caused by network congestion in your area, being in a low-signal zone, or reaching your high-speed data cap. Try toggling airplane mode off and on to force a network reconnect. If your high-speed data is exhausted your speed is throttled to 512 kbps.
+---
+Question: Why is my mobile internet so slow?
+Answer: Slow speeds are usually caused by network congestion in your area, being in a low-signal zone, or reaching your high-speed data cap. Try toggling airplane mode off and on to force a network reconnect. If your high-speed data is exhausted your speed is throttled to 512 kbps.
+---
+Question: Why is my mobile internet so slow?
+Answer: Slow speeds are usually caused by network congestion in your area, being in a low-signal zone, or reaching your high-speed data cap. Try toggling airplane mode off and on to force a network reconnect. If your high-speed data is exhausted your speed is throttled to 512 kbps.",296.36,1120.96,1417.33,1.0,1.0,1.0,0.8223
+TC-003,Out-of-Scope,What is our company's parental leave policy in Germany?,ok,,I don't have that information.,"Roaming Zones: Our network divides the world into roaming zones based on inter-operator agreements and cost structures. Zone A (EU, UK, Australia, New Zealand) has the lowest roaming rates. Zone B (USA, Canada, Japan, Singapore) has moderate rates. Zone C (Rest of World) has the highest per-MB and per-minute charges. Customers should always purchase a roaming bundle before travelling to Zone B or C countries to avoid bill shock.
+---
+Unlimited Plans and Fair Use: Plans marketed as ""unlimited"" are subject to a Fair Use Policy (FUP). Customers who consume an unusually large volume of data - typically above 100 GB per cycle - may be deprioritised during periods of network congestion. Deprioritisation is temporary and only applied when the customer is connected to a congested cell; it does not affect customers in uncongested areas.
+---
+Roaming Zones: Our network divides the world into roaming zones based on inter-operator agreements and cost structures. Zone A (EU, UK, Australia, New Zealand) has the lowest roaming rates. Zone B (USA, Canada, Japan, Singapore) has moderate rates. Zone C (Rest of World) has the highest per-MB and per-minute charges. Customers should always purchase a roaming bundle before travelling to Zone B or C countries to avoid bill shock.
+---
+Unlimited Plans and Fair Use: Plans marketed as ""unlimited"" are subject to a Fair Use Policy (FUP). Customers who consume an unusually large volume of data - typically above 100 GB per cycle - may be deprioritised during periods of network congestion. Deprioritisation is temporary and only applied when the customer is connected to a congested cell; it does not affect customers in uncongested areas.
+---
+Roaming Zones: Our network divides the world into roaming zones based on inter-operator agreements and cost structures. Zone A (EU, UK, Australia, New Zealand) has the lowest roaming rates. Zone B (USA, Canada, Japan, Singapore) has moderate rates. Zone C (Rest of World) has the highest per-MB and per-minute charges. Customers should always purchase a roaming bundle before travelling to Zone B or C countries to avoid bill shock.",290.82,723.64,1014.47,0.0,1.0,0.0,0.0
+TC-004,Simple Factoid,Can I keep my number when switching to your network?,ok,,"Yes! Number porting is free and usually finishes within about 2 hours on working days. Just call 611 or visit a store to start the port, and keep your old SIM active until you get an SMS confirming the port is complete.","Question: Can I keep my number when switching to your network?
+Answer: Yes. Number porting is free and usually completes within 2 hours on working days. Start the port by calling 611 or visiting a store. Keep your old SIM active until you receive an SMS confirming the port is complete.
+---
+Question: Can I keep my number when switching to your network?
+Answer: Yes. Number porting is free and usually completes within 2 hours on working days. Start the port by calling 611 or visiting a store. Keep your old SIM active until you receive an SMS confirming the port is complete.
+---
+Question: Can I keep my number when switching to your network?
+Answer: Yes. Number porting is free and usually completes within 2 hours on working days. Start the port by calling 611 or visiting a store. Keep your old SIM active until you receive an SMS confirming the port is complete.
+---
+Question: Can I keep my number when switching to your network?
+Answer: Yes. Number porting is free and usually completes within 2 hours on working days. Start the port by calling 611 or visiting a store. Keep your old SIM active until you receive an SMS confirming the port is complete.
+---
+Question: Can I keep my number when switching to your network?
+Answer: Yes. Number porting is free and usually completes within 2 hours on working days. Start the port by calling 611 or visiting a store. Keep your old SIM active until you receive an SMS confirming the port is complete.",394.86,701.05,1095.91,1.0,1.0,1.0,1.0

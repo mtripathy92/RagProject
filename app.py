@@ -3,7 +3,7 @@ import os
 import threading
 from pathlib import Path
 from typing import Any
-
+from dotenv import load_dotenv
 import pandas as pd
 import requests
 import yaml
@@ -19,6 +19,8 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_qdrant import FastEmbedSparse, QdrantVectorStore, RetrievalMode
 from transformers import AutoTokenizer
 os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS", "1")
+
+load_dotenv()
 
 # Reads settings from config.yaml so model names, paths, or keys aren't hardcoded everywhere
 def load_config(config_path: Path | None = None) -> dict[str, Any]:
@@ -46,6 +48,9 @@ class TelecomRAGService:
     # Quick check (True/False) telling callers whether the system is ready to answer questions
     @property
     def is_ready(self) -> bool:
+        print("#@#@#@#@##@#@#@#@#@#@#@#@#@#@#@#@#@")
+        print(self._initialized)
+        print(self.chain)
         return self._initialized and self.chain is not None
 
     # Gathers knowledge from the FAQ CSV and PDF guide and turns them into searchable pieces
@@ -155,7 +160,7 @@ class TelecomRAGService:
         )
         print(f"**************************************retriever: {retriever}")
         # Look up the Groq API password/key from the environment or config file; fail early if missing
-        groq_api_key = os.environ.get("GROQ_API_KEY") or self.confs.get("GROQ_API_KEY")
+        groq_api_key = os.getenv("GROQ_API_KEY")
         if not groq_api_key:
             raise ValueError("GROQ_API_KEY is missing from environment variables and config.yaml")
 

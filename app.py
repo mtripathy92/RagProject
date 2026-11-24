@@ -18,9 +18,12 @@ from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_qdrant import FastEmbedSparse, QdrantVectorStore, RetrievalMode
 from transformers import AutoTokenizer
+from routing import get_question_route
+from sql_rag import TicketSQLRAG
 os.environ.setdefault("HF_HUB_DISABLE_SYMLINKS", "1")
 
 load_dotenv()
+
 
 # Reads settings from config.yaml so model names, paths, or keys aren't hardcoded everywhere
 def load_config(config_path: Path | None = None) -> dict[str, Any]:
@@ -44,6 +47,7 @@ class TelecomRAGService:
         self.vectorstore: QdrantVectorStore | None = None  # Will hold the searchable database of documents
         self.retriever = None  # Will act as the "librarian" that finds the most relevant snippets
         self.chain = None  # Will hold the full pipeline: find info -> build prompt -> ask AI -> return answer
+        self.sql_rag = TicketSQLRAG()
 
     # Quick check (True/False) telling callers whether the system is ready to answer questions
     @property
@@ -73,8 +77,8 @@ class TelecomRAGService:
             )
 
         # 2. Download and Process PDF
-        local_pdf_path = Path(self.confs.get("LOCAL_PDF_PATH", "/tmp/downloaded_document.pdf"))
-        local_pdf_path.parent.mkdir(parents=True, exist_ok=True)
+        # local_pdf_path = Path(self.confs.get("LOCAL_PDF_PATH", "/tmp/downloaded_document.pdf"))
+        # local_pdf_path.parent.mkdir(parents=True, exist_ok=True)
 
         # response = requests.get(
         #     f"{self.confs['GITHUB_RAW_BASE']}/{self.confs['PDF_URL']}",
@@ -83,7 +87,7 @@ class TelecomRAGService:
         # response.raise_for_status()
         # local_pdf_path.write_bytes(response.content)
 
-        PROJECT_ROOT = Path(__file__).resolve().parent.parent
+        # PROJECT_ROOT = Path(__file__).resolve().parent.parent
         pdf_path = Path("data/downloaded_document.pdf")
 
         # Stop with a clear error if the PDF file isn't where expected
@@ -173,9 +177,9 @@ class TelecomRAGService:
 
         # Rules telling the AI to stick strictly to retrieved company info and admit when unsure
         system_prompt = """You are a helpful TelecomCo customer support assistant.
-Answer the customer's question using ONLY the information provided in the context below.
-If the answer is not in the context, say "I don't have that information."
-Keep answers concise and friendly.
+                            Answer the customer's question using ONLY the information provided in the context below.
+                            If the answer is not in the context, say "I don't have that information."
+                            Keep answers concise and friendly.
 
 Context:
 {context}"""
@@ -226,12 +230,28 @@ Context:
             raise RuntimeError("RAG service is not initialized.")
         return self.retriever.invoke(question)
 
+
     # Finds matching document snippets for a question and asks the AI to write a helpful answer
     def ask(self, question: str) -> str:
         """Real-time retrieval + LLM answer generation."""
+        print("HIiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
         if not self.is_ready:
             raise RuntimeError("RAG service is not initialized.")
-        return self.chain.invoke(question)
+        # Step 1: Identify the question route
+        route_name = get_question_route(question)
+        print(f"Question==========>{question}Route Name=============================================>{route_name}")
+
+        # Step 2: SQL RAG
+        if route_name == "sql_route":
+            print("Selected Route: sql_route")
+            response,sql = self.sql_rag.ask(question)
+            return {"answer":response,"route":route_name,"Query":sql}
+
+        # Step 3: Vector RAG
+        elif route_name == "vector_route":
+            print("Comes inside vector===================")
+            response = self.chain.invoke(question)
+            return {"answer":response,"route":route_name,"Query":"NA"}
 
 
 # Shortcut function that creates the service, runs setup, and returns just the answer chain

@@ -30,7 +30,7 @@ def ask(payload: QuestionRequest):
         raise HTTPException(status_code=500, detail="RAG system not initialized properly.")
     try:
         response = rag_service.ask(payload.question)
-        return {"answer": response}
+        return response
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

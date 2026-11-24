@@ -17,10 +17,6 @@ def load_config(config_path: Path | None = None) -> dict[str, Any]:
     with resolved_path.open("r", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
-"""
-"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"
-"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"
-"""
 
 class TiscketSQLRAG:
 

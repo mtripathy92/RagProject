@@ -73,8 +73,8 @@ class TelecomRAGService:
             )
 
         # 2. Download and Process PDF
-        local_pdf_path = Path(self.confs.get("LOCAL_PDF_PATH", "/tmp/downloaded_document.pdf"))
-        local_pdf_path.parent.mkdir(parents=True, exist_ok=True)
+        # local_pdf_path = Path(self.confs.get("LOCAL_PDF_PATH", "/tmp/downloaded_document.pdf"))
+        # local_pdf_path.parent.mkdir(parents=True, exist_ok=True)
 
         # response = requests.get(
         #     f"{self.confs['GITHUB_RAW_BASE']}/{self.confs['PDF_URL']}",
@@ -83,7 +83,7 @@ class TelecomRAGService:
         # response.raise_for_status()
         # local_pdf_path.write_bytes(response.content)
 
-        PROJECT_ROOT = Path(__file__).resolve().parent.parent
+        # PROJECT_ROOT = Path(__file__).resolve().parent.parent
         pdf_path = Path("data/downloaded_document.pdf")
 
         # Stop with a clear error if the PDF file isn't where expected
